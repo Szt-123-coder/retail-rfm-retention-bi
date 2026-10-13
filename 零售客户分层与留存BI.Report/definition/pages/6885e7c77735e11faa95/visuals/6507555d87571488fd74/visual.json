@@ -1,0 +1,33 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "6507555d87571488fd74",
+  "position": {
+    "x": 0,
+    "y": 964.314606741573,
+    "z": 5000,
+    "height": 116.49438202247191,
+    "width": 1121.7977528089887,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "数据截至 2011-12-09；热力图不含不完整的 2011-12；2009-12 行为\"期初已观察客户（既往历史未知）\"；回购率分母为首次观察客户。"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

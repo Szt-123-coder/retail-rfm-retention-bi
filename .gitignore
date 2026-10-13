@@ -1,0 +1,17 @@
+data/
+参考/
+_to_delete/
+.ipynb_checkpoints/
+__pycache__/
+*.pbix.bak
+开场指令.md
+interview.md
+项目说明.md
+
+# Power BI：pbix 和本地缓存里含导入后的数据，不上传；只上传 PBIP 文本文件
+*.pbix
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
+
+# 内部进度记录，只留本地
+docs/进度总结_*.md

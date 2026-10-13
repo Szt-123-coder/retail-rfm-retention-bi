@@ -1,0 +1,72 @@
+table repurchase
+	lineageTag: 42dc1613-40bf-4b51-854e-efcd5ee56bc6
+
+	column 预热期（月）
+		dataType: int64
+		formatString: 0
+		lineageTag: ecacead9-51b3-48cb-adc4-f5d83627e406
+		summarizeBy: sum
+		sourceColumn: 预热期（月）
+
+		annotation SummarizationSetBy = Automatic
+
+	column N
+		dataType: int64
+		formatString: 0
+		lineageTag: c66799fe-575c-45f5-8700-28ce3d5bcfe6
+		summarizeBy: none
+		sourceColumn: N
+
+		annotation SummarizationSetBy = User
+
+	column 分母
+		dataType: int64
+		formatString: 0
+		lineageTag: 655f83d3-639c-4dfa-81f9-1d106313e168
+		summarizeBy: sum
+		sourceColumn: 分母
+
+		annotation SummarizationSetBy = Automatic
+
+	column 分子
+		dataType: int64
+		formatString: 0
+		lineageTag: cdc462f8-c7f7-488a-915c-be3206b181ae
+		summarizeBy: sum
+		sourceColumn: 分子
+
+		annotation SummarizationSetBy = Automatic
+
+	column 回购率
+		dataType: double
+		lineageTag: 5c80a987-460f-4b47-a7fc-2027a4c9b465
+		summarizeBy: sum
+		sourceColumn: 回购率
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column N天数 = repurchase[N] & "天"
+		lineageTag: 246855d2-dbb5-4cdf-b631-723897e50c74
+		summarizeBy: none
+		sortByColumn: N
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	partition repurchase = m
+		mode: import
+		source =
+				let
+				    源 = Csv.Document(File.Contents("D:\AI\求职项目\零售客户分层与留存BI\data\powerbi\repurchase.csv"),[Delimiter=",", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    提升的标题 = Table.PromoteHeaders(源, [PromoteAllScalars=true]),
+				    更改的类型 = Table.TransformColumnTypes(提升的标题,{{"预热期（月）", Int64.Type}, {"N", Int64.Type}, {"分母", Int64.Type}, {"分子", Int64.Type}, {"回购率", Percentage.Type}})
+				in
+				    更改的类型
+
+	annotation PBI_NavigationStepName = 导航
+
+	annotation PBI_ResultType = Table
+

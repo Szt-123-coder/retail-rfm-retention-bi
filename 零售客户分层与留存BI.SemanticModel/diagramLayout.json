@@ -1,0 +1,87 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 1,
+        "y": 26
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 568,
+            "y": 39
+          },
+          "nodeIndex": "cohort",
+          "nodeLineageTag": "6b73dd50-9ea1-464b-8368-b10ab67180d9",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 296,
+            "y": 0
+          },
+          "nodeIndex": "customers",
+          "nodeLineageTag": "2329a9ef-d612-40f3-ae57-5b9b0ea0148e",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 29,
+            "y": 254
+          },
+          "nodeIndex": "migration",
+          "nodeLineageTag": "0abe913d-9c18-409c-845f-88115e92e623",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 852,
+            "y": 63
+          },
+          "nodeIndex": "repurchase",
+          "nodeLineageTag": "42dc1613-40bf-4b51-854e-efcd5ee56bc6",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 291.5,
+            "y": 324
+          },
+          "nodeIndex": "actions",
+          "nodeLineageTag": "b9f4c664-9d47-48b1-92f5-10d951551c6c",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "所有表",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "所有表",
+  "defaultDiagram": "所有表"
+}

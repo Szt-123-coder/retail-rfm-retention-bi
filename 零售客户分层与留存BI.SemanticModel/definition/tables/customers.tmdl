@@ -1,0 +1,243 @@
+table customers
+	lineageTag: 2329a9ef-d612-40f3-ae57-5b9b0ea0148e
+
+	measure 客户数 = COUNTROWS ( customers )
+		formatString: #,0
+		lineageTag: 51d801f4-0882-42b9-b596-2a1b1b999bb6
+
+	measure 一次性客户占比 = DIVIDE ( CALCULATE ( COUNTROWS ( customers ), customers[F] = 1 ), [客户数] )
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 2727b96c-c2ed-463b-836a-6782116e1842
+
+	measure 按规则流失人数 = CALCULATE ( COUNTROWS ( customers ), customers[churned_by_rule] = TRUE () )
+		formatString: 0
+		lineageTag: 12267d27-2e8c-4a74-8e52-b77443ba1bc8
+
+	measure 90天回购率 =
+			
+			CALCULATE (
+			    DIVIDE ( SUM ( repurchase[分子] ), SUM ( repurchase[分母] ) ),
+			    repurchase[N] = 90,
+			    repurchase[预热期（月）] = 1
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 3af734a4-b03e-4fba-902f-1cde16ce676d
+
+	measure 回购率 = DIVIDE ( SUM ( repurchase[分子] ), SUM ( repurchase[分母] ) )
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: ed91675a-432b-455d-977a-b1bced04f185
+
+	measure M合计 = SUM ( customers[M] )
+		lineageTag: d6cdd268-bcc7-41ae-ba0f-48f00a54e3ae
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure M占比 = DIVIDE ( [M合计], CALCULATE ( [M合计], ALL ( customers[segment], customers[segment_order] ) ) )
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 8924c518-1356-44bd-bb06-3ee43ebb577e
+
+	measure 留存率 = DIVIDE ( SUM ( cohort[active] ), SUM ( cohort[size] ) )
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 4f6cef82-b688-4e7a-a255-1746df0627ab
+
+	measure 迁移人数 = COUNTROWS ( migration )
+		formatString: 0
+		lineageTag: 92baa18c-abe6-4918-a256-4cc1b20e7016
+
+	measure 迁移占比 = DIVIDE ( [迁移人数], CALCULATE ( [迁移人数], ALLSELECTED ( migration[主窗口分层_显示], migration[主窗口分层排序] ) ) )
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 22640282-25cf-47e7-94fc-7564afca993f
+
+	measure 客户数显示 = FORMAT ( [客户数], "#,0" )
+		lineageTag: 3e0d3600-71a5-4da3-86d2-353a274c48da
+
+	column 'Customer ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 22c4c3bb-52bc-40f0-adbe-8d8e6db45142
+		summarizeBy: none
+		sourceColumn: Customer ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_valid_day
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: a0b4101d-2c02-4c61-98f2-595580841f64
+		summarizeBy: none
+		sourceColumn: last_valid_day
+
+		variation 变体
+			isDefault
+			relationship: ca9e6b03-39e4-4164-86c3-4a21235c84cc
+			defaultHierarchy: LocalDateTable_e3cc2a6b-6253-4f49-b567-e60920eb27c7.日期层次结构
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column F
+		dataType: int64
+		formatString: 0
+		lineageTag: 35025485-a076-4471-82cc-db3fb41c460d
+		summarizeBy: none
+		sourceColumn: F
+
+		annotation SummarizationSetBy = User
+
+	column R
+		dataType: int64
+		formatString: 0
+		lineageTag: 3a8c486c-cab6-415e-9bc5-efbedcae9deb
+		summarizeBy: none
+		sourceColumn: R
+
+		annotation SummarizationSetBy = User
+
+	column M
+		dataType: double
+		lineageTag: d128bc60-39f5-42ac-ad5b-2da119ad5349
+		summarizeBy: none
+		sourceColumn: M
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column R_score
+		dataType: int64
+		formatString: 0
+		lineageTag: 21a9741f-2f8f-4978-8748-4d3f1c4d4c6a
+		summarizeBy: sum
+		sourceColumn: R_score
+
+		annotation SummarizationSetBy = Automatic
+
+	column M_score
+		dataType: int64
+		formatString: 0
+		lineageTag: 5a9cebeb-ecb7-4545-bc65-c66814dd2f2f
+		summarizeBy: sum
+		sourceColumn: M_score
+
+		annotation SummarizationSetBy = Automatic
+
+	column F_score
+		dataType: int64
+		formatString: 0
+		lineageTag: f1ea5f5f-4b29-46b4-b4d5-d6f225402b08
+		summarizeBy: sum
+		sourceColumn: F_score
+
+		annotation SummarizationSetBy = Automatic
+
+	column M_negative
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 97ce9f85-757b-4819-92f1-80ac0f884c87
+		summarizeBy: none
+		sourceColumn: M_negative
+
+		annotation SummarizationSetBy = Automatic
+
+	column high_value
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 1f420aa1-0db4-4a27-918c-4d3f5e503496
+		summarizeBy: none
+		sourceColumn: high_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column churned_by_rule
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: d681a0ef-bfd8-4fec-9b7e-42c9921ec9d5
+		summarizeBy: none
+		sourceColumn: churned_by_rule
+
+		annotation SummarizationSetBy = Automatic
+
+	column segment
+		dataType: string
+		lineageTag: 57af2b57-c1c3-48bb-ac59-546bb6a21f68
+		summarizeBy: none
+		sourceColumn: segment
+		sortByColumn: segment_order
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 上一年分层
+		dataType: string
+		lineageTag: 44c84787-ac28-46f5-89a4-1077b69d1844
+		summarizeBy: none
+		sourceColumn: 上一年分层
+
+		annotation SummarizationSetBy = Automatic
+
+	column 主窗口分层
+		dataType: string
+		lineageTag: 590d9e82-79de-4284-b479-fc87e066f606
+		summarizeBy: none
+		sourceColumn: 主窗口分层
+
+		annotation SummarizationSetBy = Automatic
+
+	column first_valid_day
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 66ad180f-539f-4c7f-9a5c-583e17e719a6
+		summarizeBy: none
+		sourceColumn: first_valid_day
+
+		variation 变体
+			isDefault
+			relationship: 04fc6be0-23b4-4cc9-8e72-7626b7fedee6
+			defaultHierarchy: LocalDateTable_56ffcbd8-c4ac-4fd2-82ff-14c5e4d13592.日期层次结构
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 客户类型
+		dataType: string
+		lineageTag: 62d29a63-43ee-408b-a881-413c77c0300f
+		summarizeBy: none
+		sourceColumn: 客户类型
+
+		annotation SummarizationSetBy = Automatic
+
+	column segment_order
+		dataType: int64
+		formatString: 0
+		lineageTag: c1e425d0-e70c-464f-b1e6-9fb7233b319d
+		summarizeBy: sum
+		sourceColumn: segment_order
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 高价值标签 = IF ( customers[high_value], "高价值", "非高价值" )
+		dataType: string
+		lineageTag: 28504cba-54dd-4a66-87a9-75db3a88a6a9
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition customers = m
+		mode: import
+		source =
+				let
+				    源 = Csv.Document(File.Contents("D:\AI\求职项目\零售客户分层与留存BI\data\powerbi\customers.csv"),[Delimiter=",", Columns=17, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    提升的标题 = Table.PromoteHeaders(源, [PromoteAllScalars=true]),
+				    更改的类型 = Table.TransformColumnTypes(提升的标题,{{"Customer ID", Int64.Type}, {"last_valid_day", type date}, {"F", Int64.Type}, {"R", Int64.Type}, {"M", type number}, {"R_score", Int64.Type}, {"M_score", Int64.Type}, {"F_score", Int64.Type}, {"M_negative", type logical}, {"high_value", type logical}, {"churned_by_rule", type logical}, {"segment", type text}, {"上一年分层", type text}, {"主窗口分层", type text}, {"first_valid_day", type date}, {"客户类型", type text}, {"segment_order", Int64.Type}})
+				in
+				    更改的类型
+
+	annotation PBI_NavigationStepName = 导航
+
+	annotation PBI_ResultType = Table
+

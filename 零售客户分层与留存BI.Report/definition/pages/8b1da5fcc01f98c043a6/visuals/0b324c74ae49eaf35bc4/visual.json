@@ -1,0 +1,396 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "0b324c74ae49eaf35bc4",
+  "position": {
+    "x": 8.2403433476394845,
+    "y": 0,
+    "z": 0,
+    "height": 1079.4849785407725,
+    "width": 1009.4420600858369,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "actions"
+                    }
+                  },
+                  "Property": "行动内序号"
+                }
+              },
+              "queryRef": "actions.行动内序号",
+              "nativeQueryRef": "行动内序号"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "actions"
+                    }
+                  },
+                  "Property": "Customer ID"
+                }
+              },
+              "queryRef": "actions.Customer ID",
+              "nativeQueryRef": "Customer ID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "actions"
+                    }
+                  },
+                  "Property": "分层依据"
+                }
+              },
+              "queryRef": "actions.分层依据",
+              "nativeQueryRef": "分层依据"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "actions"
+                    }
+                  },
+                  "Property": "分层"
+                }
+              },
+              "queryRef": "actions.分层",
+              "nativeQueryRef": "分层"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "actions"
+                    }
+                  },
+                  "Property": "高价值"
+                }
+              },
+              "queryRef": "actions.高价值",
+              "nativeQueryRef": "高价值"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "actions"
+                    }
+                  },
+                  "Property": "按规则流失"
+                }
+              },
+              "queryRef": "actions.按规则流失",
+              "nativeQueryRef": "按规则流失"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "actions"
+                    }
+                  },
+                  "Property": "最后有效购买日"
+                }
+              },
+              "queryRef": "actions.最后有效购买日",
+              "nativeQueryRef": "最后有效购买日"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "actions"
+                    }
+                  },
+                  "Property": "R"
+                }
+              },
+              "queryRef": "actions.R",
+              "nativeQueryRef": "R"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "actions"
+                    }
+                  },
+                  "Property": "主窗口M"
+                }
+              },
+              "queryRef": "Sum(actions.主窗口M)",
+              "nativeQueryRef": "主窗口M"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "actions"
+                    }
+                  },
+                  "Property": "上一年M"
+                }
+              },
+              "queryRef": "Sum(actions.上一年M)",
+              "nativeQueryRef": "上一年M"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "actions"
+                    }
+                  },
+                  "Property": "取消金额"
+                }
+              },
+              "queryRef": "Sum(actions.取消金额)",
+              "nativeQueryRef": "取消金额"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "actions"
+                    }
+                  },
+                  "Property": "取消占比"
+                }
+              },
+              "queryRef": "Sum(actions.取消占比)",
+              "nativeQueryRef": "取消占比"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "actions"
+                  }
+                },
+                "Property": "行动内序号"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "total": [
+        {
+          "properties": {
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "5c5158ac5ad044ad87fa",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "actions"
+              }
+            },
+            "Property": "行动内序号"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "9bf764a2c29bffecc1ad",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "actions"
+              }
+            },
+            "Property": "Customer ID"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "8615f5ab73c87db90d84",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "actions"
+              }
+            },
+            "Property": "分层依据"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "d9140590c0f1f580055a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "actions"
+              }
+            },
+            "Property": "分层"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "69e2a90115b89b59ad62",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "actions"
+              }
+            },
+            "Property": "高价值"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "ca5d34c1811997fda12d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "actions"
+              }
+            },
+            "Property": "按规则流失"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "de541d139b3478f1f4dd",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "actions"
+              }
+            },
+            "Property": "R"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "8e740bae5e2d5a858437",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "actions"
+              }
+            },
+            "Property": "主窗口M"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "ee28f93c2eb58ec8491e",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "actions"
+              }
+            },
+            "Property": "上一年M"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "26cb92814129874f5d25",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "actions"
+              }
+            },
+            "Property": "取消金额"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "72d93a569946a01878fc",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "actions"
+              }
+            },
+            "Property": "取消占比"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "e02fedfea2107fd59b84",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "actions"
+              }
+            },
+            "Property": "最后有效购买日"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

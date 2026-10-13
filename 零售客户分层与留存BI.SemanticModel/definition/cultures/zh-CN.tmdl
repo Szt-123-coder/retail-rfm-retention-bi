@@ -1,0 +1,95 @@
+cultureInfo zh-CN
+
+	linguisticMetadata =
+			{
+			  "Version": "2.0.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "customers.column": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "customers",
+			          "ConceptualProperty": "客户数显示"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "客户数": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "customers.column1": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "customers",
+			          "ConceptualProperty": "客户数"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "名单人数": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "migration.column_": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "migration",
+			          "ConceptualProperty": "主窗口分层_显示"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "主窗口分层": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "migration.column_1": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "migration",
+			          "ConceptualProperty": "上一年分层_显示"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "上一年分层": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    }
+			  }
+			}
+		contentType: json
+

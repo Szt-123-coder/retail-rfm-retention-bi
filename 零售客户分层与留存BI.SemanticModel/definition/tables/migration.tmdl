@@ -1,0 +1,74 @@
+table migration
+	lineageTag: 0abe913d-9c18-409c-845f-88115e92e623
+
+	column 'Customer ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: b42f6dfe-a901-43b3-84ea-7966696303ef
+		summarizeBy: none
+		sourceColumn: Customer ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 上一年分层
+		dataType: string
+		lineageTag: a98df426-0510-4514-825d-e257d4881d3e
+		summarizeBy: none
+		sourceColumn: 上一年分层
+
+		annotation SummarizationSetBy = Automatic
+
+	column 主窗口分层
+		dataType: string
+		lineageTag: 34d646ec-33f0-44aa-a8c8-a840fdf4c32e
+		summarizeBy: none
+		sourceColumn: 主窗口分层
+
+		annotation SummarizationSetBy = Automatic
+
+	column 上一年分层排序 = SWITCH ( migration[上一年分层], "核心活跃", 1, "成长中", 2, "近期仅一个有效购买日", 3, "观望", 4, "高频待召回", 5, "低频沉睡", 6, "上一年无有效购买日", 7, 99 )
+		dataType: int64
+		formatString: 0
+		lineageTag: d6e224b2-e718-49c7-92e0-d1f4c1b34f7a
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 主窗口分层排序 = SWITCH ( migration[主窗口分层], "核心活跃", 1, "成长中", 2, "近期仅一个有效购买日", 3, "观望", 4, "高频待召回", 5, "低频沉睡", 6, "主窗口无有效购买日", 7, 99 )
+		dataType: int64
+		formatString: 0
+		lineageTag: 11cf6325-4f4a-4770-87ca-51c998f5294d
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 上一年分层_显示 = migration[上一年分层]
+		dataType: string
+		lineageTag: 3b8d322f-8d01-4a9b-86e3-a3c5224cb32d
+		summarizeBy: none
+		sortByColumn: 上一年分层排序
+
+		annotation SummarizationSetBy = Automatic
+
+	column 主窗口分层_显示 = migration[主窗口分层]
+		dataType: string
+		lineageTag: 88c75b96-d8f8-45fd-b0ae-b2f369a6c92e
+		summarizeBy: none
+		sortByColumn: 主窗口分层排序
+
+		annotation SummarizationSetBy = Automatic
+
+	partition migration = m
+		mode: import
+		source =
+				let
+				    源 = Csv.Document(File.Contents("D:\AI\求职项目\零售客户分层与留存BI\data\powerbi\migration.csv"),[Delimiter=",", Columns=3, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    提升的标题 = Table.PromoteHeaders(源, [PromoteAllScalars=true]),
+				    更改的类型 = Table.TransformColumnTypes(提升的标题,{{"Customer ID", Int64.Type}, {"上一年分层", type text}, {"主窗口分层", type text}})
+				in
+				    更改的类型
+
+	annotation PBI_NavigationStepName = 导航
+
+	annotation PBI_ResultType = Table
+

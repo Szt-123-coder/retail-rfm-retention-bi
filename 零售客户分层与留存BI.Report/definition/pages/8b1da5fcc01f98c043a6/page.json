@@ -1,0 +1,8 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "8b1da5fcc01f98c043a6",
+  "displayName": "行动名单",
+  "displayOption": "FitToPage",
+  "height": 1080,
+  "width": 1920
+}

@@ -1,0 +1,29 @@
+model Model
+	culture: zh-CN
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: zh-CN
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["customers","cohort","migration","repurchase","actions"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table customers
+ref table DateTableTemplate_9670f901-1a15-48b9-80f8-0b01a2aa125e
+ref table LocalDateTable_e3cc2a6b-6253-4f49-b567-e60920eb27c7
+ref table LocalDateTable_56ffcbd8-c4ac-4fd2-82ff-14c5e4d13592
+ref table cohort
+ref table LocalDateTable_0bb501c0-66a5-43d6-9620-921a2db27e90
+ref table LocalDateTable_731b21ad-fd34-4a38-9cc9-544bab120c4b
+ref table migration
+ref table repurchase
+ref table actions
+ref table LocalDateTable_cf1a358b-a8fe-483d-b718-7ed9214a855c
+
+ref cultureInfo zh-CN
+

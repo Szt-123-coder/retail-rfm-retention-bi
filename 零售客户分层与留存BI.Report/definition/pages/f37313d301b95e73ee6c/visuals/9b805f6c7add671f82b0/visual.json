@@ -1,0 +1,203 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "9b805f6c7add671f82b0",
+  "position": {
+    "x": 535.6223175965665,
+    "y": 337.85407725321886,
+    "z": 3000,
+    "height": 261.6309012875536,
+    "width": 844.6351931330472,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Columns": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "migration"
+                    }
+                  },
+                  "Property": "主窗口分层_显示"
+                }
+              },
+              "queryRef": "migration.主窗口分层_显示",
+              "nativeQueryRef": "主窗口分层_显示",
+              "active": true,
+              "displayName": "主窗口分层"
+            }
+          ]
+        },
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "migration"
+                    }
+                  },
+                  "Property": "上一年分层_显示"
+                }
+              },
+              "queryRef": "migration.上一年分层_显示",
+              "nativeQueryRef": "上一年分层_显示",
+              "active": true,
+              "displayName": "上一年分层"
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "customers"
+                    }
+                  },
+                  "Property": "迁移占比"
+                }
+              },
+              "queryRef": "customers.迁移占比",
+              "nativeQueryRef": "迁移占比"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "subTotals": [
+        {
+          "properties": {
+            "rowSubtotals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "perRowLevel": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "columnSubtotals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "cb35ee14b6334ad55779",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "customers"
+              }
+            },
+            "Property": "迁移人数"
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "5420a947e316c90f6493",
+        "field": {
+          "Arithmetic": {
+            "Left": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "customers"
+                  }
+                },
+                "Property": "迁移人数"
+              }
+            },
+            "Right": {
+              "ScopedEval": {
+                "Expression": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "customers"
+                      }
+                    },
+                    "Property": "迁移人数"
+                  }
+                },
+                "Scope": []
+              }
+            },
+            "Operator": 3
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "55bc22bd3ca0a1b10fbd",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "migration"
+              }
+            },
+            "Property": "主窗口分层_显示"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "8b5024fedf40014a4719",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "migration"
+              }
+            },
+            "Property": "上一年分层_显示"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "f13f3cc99f3ba30bcb05",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "customers"
+              }
+            },
+            "Property": "迁移占比"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

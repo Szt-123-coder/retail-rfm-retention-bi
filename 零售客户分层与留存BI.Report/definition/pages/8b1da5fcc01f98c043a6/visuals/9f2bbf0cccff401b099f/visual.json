@@ -1,0 +1,33 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "9f2bbf0cccff401b099f",
+  "position": {
+    "x": 1017.6824034334765,
+    "y": 399.656652360515,
+    "z": 13,
+    "height": 30.901287553648068,
+    "width": 545.92274678111585,
+    "tabOrder": 13
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "按规则流失 = 最后一个有效购买日距 2011-12-09 满 180 天，不代表客户不会再来"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "77b27063069839d965cb",
+  "position": {
+    "x": 1017.6824034334765,
+    "y": 181.28755364806867,
+    "z": 12,
+    "height": 218.36909871244634,
+    "width": 238.96995708154506,
+    "tabOrder": 12
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "actions"
+                    }
+                  },
+                  "Property": "行动人数"
+                }
+              },
+              "queryRef": "actions.行动人数",
+              "nativeQueryRef": "行动人数"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "actions"
+                  }
+                },
+                "Property": "行动人数"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "4dfc3229b8744a66432f",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "actions"
+              }
+            },
+            "Property": "行动人数"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

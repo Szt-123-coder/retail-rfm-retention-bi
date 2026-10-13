@@ -1,0 +1,152 @@
+table actions
+	lineageTag: b9f4c664-9d47-48b1-92f5-10d951551c6c
+
+	measure 行动人数 = COUNTROWS ( actions )
+		formatString: 0
+		lineageTag: 3eed1bb6-080e-42d2-8940-a54228f7dfdd
+
+	column 行动顺序
+		dataType: int64
+		formatString: 0
+		lineageTag: 4b5353d6-a9a7-4201-8960-35e1099c323c
+		summarizeBy: none
+		sourceColumn: 行动顺序
+
+		annotation SummarizationSetBy = User
+
+	column 行动
+		dataType: string
+		lineageTag: f467b899-43ac-4007-aa9a-fedf4b8832c8
+		summarizeBy: none
+		sourceColumn: 行动
+		sortByColumn: 行动顺序
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 行动内序号
+		dataType: int64
+		formatString: 0
+		lineageTag: de553f7b-8ac6-4808-a2bc-e9866a5db870
+		summarizeBy: none
+		sourceColumn: 行动内序号
+
+		annotation SummarizationSetBy = User
+
+	column 'Customer ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 86986e54-3d08-47d8-af32-94e99f0ec021
+		summarizeBy: none
+		sourceColumn: Customer ID
+
+		annotation SummarizationSetBy = User
+
+	column 分层依据
+		dataType: string
+		lineageTag: 0b8efc34-6333-4ea8-aa30-33ba43fb5c72
+		summarizeBy: none
+		sourceColumn: 分层依据
+
+		annotation SummarizationSetBy = Automatic
+
+	column 分层
+		dataType: string
+		lineageTag: 6ef126bc-5c1a-47a7-80b6-79bde5725385
+		summarizeBy: none
+		sourceColumn: 分层
+
+		annotation SummarizationSetBy = Automatic
+
+	column 高价值
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 6e9cf0f3-d653-4887-80e4-7bfd32f75af7
+		summarizeBy: none
+		sourceColumn: 高价值
+
+		annotation SummarizationSetBy = Automatic
+
+	column 按规则流失
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: ce444eab-eb57-407a-b393-a757ae1ff76e
+		summarizeBy: none
+		sourceColumn: 按规则流失
+
+		annotation SummarizationSetBy = Automatic
+
+	column 最后有效购买日
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 1096013f-c91b-4a4b-a074-c11fbe13eb46
+		summarizeBy: none
+		sourceColumn: 最后有效购买日
+
+		variation 变体
+			isDefault
+			relationship: bd9b4ce2-f852-4f9b-948f-55c474e3a533
+			defaultHierarchy: LocalDateTable_cf1a358b-a8fe-483d-b718-7ed9214a855c.日期层次结构
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column R
+		dataType: int64
+		formatString: 0
+		lineageTag: c468992f-1068-4680-b7b8-286c12cdb469
+		summarizeBy: none
+		sourceColumn: R
+
+		annotation SummarizationSetBy = User
+
+	column 主窗口M
+		dataType: double
+		formatString: #,0.00
+		lineageTag: f8dee1d1-f957-41c7-bb69-2eb715b89fb5
+		summarizeBy: sum
+		sourceColumn: 主窗口M
+
+		annotation SummarizationSetBy = Automatic
+
+	column 上一年M
+		dataType: double
+		formatString: #,0.00
+		lineageTag: d5a9da3a-b28f-4006-9cc1-b8f541d9f60d
+		summarizeBy: sum
+		sourceColumn: 上一年M
+
+		annotation SummarizationSetBy = Automatic
+
+	column 取消金额
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 6c70bd3f-8390-490d-9854-fbf03d4044b7
+		summarizeBy: none
+		sourceColumn: 取消金额
+
+		annotation SummarizationSetBy = User
+
+	column 取消占比
+		dataType: double
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: b8d37098-b079-484f-bf41-c684ad8ea0c9
+		summarizeBy: none
+		sourceColumn: 取消占比
+
+		annotation SummarizationSetBy = User
+
+	partition actions = m
+		mode: import
+		source =
+				let
+				    源 = Csv.Document(File.Contents("D:\AI\求职项目\零售客户分层与留存BI\data\powerbi\actions.csv"),[Delimiter=",", Columns=14, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    提升的标题 = Table.PromoteHeaders(源, [PromoteAllScalars=true]),
+				    更改的类型 = Table.TransformColumnTypes(提升的标题,{{"行动顺序", Int64.Type}, {"行动", type text}, {"行动内序号", Int64.Type}, {"Customer ID", Int64.Type}, {"分层依据", type text}, {"分层", type text}, {"高价值", type logical}, {"按规则流失", type logical}, {"最后有效购买日", type date}, {"R", Int64.Type}, {"主窗口M", type number}, {"上一年M", type number}, {"取消金额", type number}, {"取消占比", type number}})
+				in
+				    更改的类型
+
+	annotation PBI_ResultType = Table
+

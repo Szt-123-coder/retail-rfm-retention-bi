@@ -1,0 +1,94 @@
+table cohort
+	lineageTag: 6b73dd50-9ea1-464b-8368-b10ab67180d9
+
+	column cohort
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 8b173ae2-ed12-4e58-98dc-d050c8cd452f
+		summarizeBy: none
+		sourceColumn: cohort
+
+		variation 变体
+			isDefault
+			relationship: 93456095-5210-4a19-8951-082a46d1ea67
+			defaultHierarchy: LocalDateTable_0bb501c0-66a5-43d6-9620-921a2db27e90.日期层次结构
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column k
+		dataType: int64
+		formatString: 0
+		lineageTag: e381d29e-6e22-4b2a-93c3-41b4eeec1ead
+		summarizeBy: none
+		sourceColumn: k
+
+		annotation SummarizationSetBy = User
+
+	column active
+		dataType: int64
+		formatString: 0
+		lineageTag: a7dd2bf5-2702-4829-8355-61630510c666
+		summarizeBy: sum
+		sourceColumn: active
+
+		annotation SummarizationSetBy = Automatic
+
+	column size
+		dataType: int64
+		formatString: 0
+		lineageTag: 41399bac-c4f7-4bea-b794-68b9f602ee47
+		summarizeBy: sum
+		sourceColumn: size
+
+		annotation SummarizationSetBy = Automatic
+
+	column rate
+		dataType: double
+		lineageTag: 1c9415ae-0e30-4e62-a649-c37f8eb471ad
+		summarizeBy: sum
+		sourceColumn: rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cohort_label
+		dataType: string
+		lineageTag: f693bc79-1ad3-43b7-a1ce-12523ea344ee
+		summarizeBy: none
+		sourceColumn: cohort_label
+
+		annotation SummarizationSetBy = Automatic
+
+	column calendar_month
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 7cd895bd-20e6-466b-b3bd-777a4967a5e4
+		summarizeBy: none
+		sourceColumn: calendar_month
+
+		variation 变体
+			isDefault
+			relationship: af25b1c6-142b-4d4c-bcb5-54b77a57c324
+			defaultHierarchy: LocalDateTable_731b21ad-fd34-4a38-9cc9-544bab120c4b.日期层次结构
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition cohort = m
+		mode: import
+		source =
+				let
+				    源 = Csv.Document(File.Contents("D:\AI\求职项目\零售客户分层与留存BI\data\powerbi\cohort.csv"),[Delimiter=",", Columns=7, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    提升的标题 = Table.PromoteHeaders(源, [PromoteAllScalars=true]),
+				    更改的类型 = Table.TransformColumnTypes(提升的标题,{{"cohort", type date}, {"k", Int64.Type}, {"active", Int64.Type}, {"size", Int64.Type}, {"rate", type number}, {"cohort_label", type text}, {"calendar_month", type date}})
+				in
+				    更改的类型
+
+	annotation PBI_NavigationStepName = 导航
+
+	annotation PBI_ResultType = Table
+

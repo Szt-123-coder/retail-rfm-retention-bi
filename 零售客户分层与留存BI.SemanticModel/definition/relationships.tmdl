@@ -1,0 +1,31 @@
+relationship ca9e6b03-39e4-4164-86c3-4a21235c84cc
+	joinOnDateBehavior: datePartOnly
+	fromColumn: customers.last_valid_day
+	toColumn: LocalDateTable_e3cc2a6b-6253-4f49-b567-e60920eb27c7.Date
+
+relationship 04fc6be0-23b4-4cc9-8e72-7626b7fedee6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: customers.first_valid_day
+	toColumn: LocalDateTable_56ffcbd8-c4ac-4fd2-82ff-14c5e4d13592.Date
+
+relationship 93456095-5210-4a19-8951-082a46d1ea67
+	joinOnDateBehavior: datePartOnly
+	fromColumn: cohort.cohort
+	toColumn: LocalDateTable_0bb501c0-66a5-43d6-9620-921a2db27e90.Date
+
+relationship af25b1c6-142b-4d4c-bcb5-54b77a57c324
+	joinOnDateBehavior: datePartOnly
+	fromColumn: cohort.calendar_month
+	toColumn: LocalDateTable_731b21ad-fd34-4a38-9cc9-544bab120c4b.Date
+
+relationship AutoDetected_475f8e31-2a32-4e1d-bcba-032c2c8e6ee5
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: customers.'Customer ID'
+	toColumn: migration.'Customer ID'
+
+relationship bd9b4ce2-f852-4f9b-948f-55c474e3a533
+	joinOnDateBehavior: datePartOnly
+	fromColumn: actions.最后有效购买日
+	toColumn: LocalDateTable_cf1a358b-a8fe-483d-b718-7ed9214a855c.Date
+

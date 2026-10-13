@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "零售客户分层与留存BI"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "b264ebf4-fa6e-41e0-a880-d27a3f60fdb5"
+  }
+}
